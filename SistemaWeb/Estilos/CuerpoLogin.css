@@ -1,0 +1,5 @@
+﻿body{
+    background-image: url('../wwwroot/Imagenes/Fondo.png'); /* Ruta relativa a la imagen */
+    background-size: cover;
+    background-position: center;
+}

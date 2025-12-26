@@ -1,0 +1,145 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|c:\\users\\bry21\\onedrive\\desktop\\sistemaweb\\sistemaweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|solutionrelative:sistemaweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|c:\\users\\bry21\\onedrive\\desktop\\sistemaweb\\sistemaweb\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|solutionrelative:sistemaweb\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|c:\\users\\bry21\\onedrive\\desktop\\sistemaweb\\sistemaweb\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|solutionrelative:sistemaweb\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|c:\\users\\bry21\\onedrive\\desktop\\sistemaweb\\sistemaweb\\wwwroot\\js\\empleado.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|solutionrelative:sistemaweb\\wwwroot\\js\\empleado.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|c:\\users\\bry21\\onedrive\\desktop\\sistemaweb\\sistemaweb\\views\\empleado\\empleadolista.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|solutionrelative:sistemaweb\\views\\empleado\\empleadolista.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|c:\\users\\bry21\\onedrive\\desktop\\sistemaweb\\sistemaweb\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|solutionrelative:sistemaweb\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|c:\\users\\bry21\\onedrive\\desktop\\sistemaweb\\sistemaweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E93CE0D5-9A07-4AEB-98BB-DCA406F83E76}|SistemaWeb\\SistemaWeb.csproj|solutionrelative:sistemaweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "SistemaWeb\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "SistemaWeb\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-25T23:38:05.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "SistemaWeb\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "SistemaWeb\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-25T23:38:02.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Empleado.js",
+              "DocumentMoniker": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\wwwroot\\js\\Empleado.js",
+              "RelativeDocumentMoniker": "SistemaWeb\\wwwroot\\js\\Empleado.js",
+              "ToolTip": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\wwwroot\\js\\Empleado.js",
+              "RelativeToolTip": "SistemaWeb\\wwwroot\\js\\Empleado.js",
+              "ViewState": "AgIAAHIBAAAAAAAAAAAYwJoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-12-08T15:49:08.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmpleadoController.cs",
+              "DocumentMoniker": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Controllers\\EmpleadoController.cs",
+              "RelativeDocumentMoniker": "SistemaWeb\\Controllers\\EmpleadoController.cs",
+              "ToolTip": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Controllers\\EmpleadoController.cs",
+              "RelativeToolTip": "SistemaWeb\\Controllers\\EmpleadoController.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T15:46:27.712Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "SistemaWeb\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "SistemaWeb\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-20T02:17:41.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaWeb\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "SistemaWeb\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAHMAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-20T02:14:29.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmpleadoLista.cshtml",
+              "DocumentMoniker": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\Empleado\\EmpleadoLista.cshtml",
+              "RelativeDocumentMoniker": "SistemaWeb\\Views\\Empleado\\EmpleadoLista.cshtml",
+              "ToolTip": "C:\\Users\\bry21\\OneDrive\\Desktop\\SistemaWeb\\SistemaWeb\\Views\\Empleado\\EmpleadoLista.cshtml",
+              "RelativeToolTip": "SistemaWeb\\Views\\Empleado\\EmpleadoLista.cshtml",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAEsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T15:19:26.069Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

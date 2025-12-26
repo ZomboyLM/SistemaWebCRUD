@@ -1,0 +1,384 @@
+﻿@model List<BajaEquipoModel>
+@{
+    ViewData["Title"] = "Baja Equipos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="~/css/carga.css" rel="stylesheet" />
+    <style>
+        /* Oculta la primera columna en la tabla */
+        #datatablesSimple th:first-child,
+        #datatablesSimple td:first-child {
+            display: none;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+
+    <div id="layoutSidenav">
+
+
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu" style="background-color: #737373;">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading" style="color:white; background-color: #343a40  ">Secciones</div>
+                        <a asp-controller="Home" asp-action="Index" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-house" style="color:white"></i></div>
+                            Index
+                        </a>
+                        <a asp-controller="Equipo" asp-action="EquipoLista" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-laptop" style="color:white"></i></div>
+                            Equipos
+                        </a>
+                        <a asp-controller="EquipoBaja" asp-action="EquipoBaja" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-circle-xmark" style="color:white"></i></div>
+                            Baja Equipos
+                        </a>
+                        <a asp-controller="Usuarios" asp-action="Listar" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-circle-user" style="color:white"></i></div>
+                            Usuarios
+                        </a>
+                        <a asp-controller="Empleado" asp-action="EmpleadoLista" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users fa-fw" style="color:white"></i></div>
+                            Empleados
+                        </a>
+                    </div>
+
+                </div>
+                <div class="sb-sidenav-footer">
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content" style="justify-content: flex-start;">
+                <div class="preloader">
+                    <div class="text-container">
+                        <div class="letter" style="color: #7FA644;">G</div>
+                        <div class="letter" style="color: #737373;">R</div>
+                        <div class="letter" style="color: #A6BF6F;">U</div>
+                        <div class="letter" style="color: #8C8C8C;">P</div>
+                        <div class="letter" style="color: #7FA644;">A</div>
+                        <div class="letter" style="color: #737373;">K</div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="background-color: #7FA644;"></div>
+                        <div class="circle" style="background-color: #737373;"></div>
+                        <div class="circle" style="background-color: #A6BF6F;"></div>
+                        <div class="circle" style="background-color: #8C8C8C;"></div>
+                    </div>
+                </div>
+
+                <div class="container" style="margin-top:30px;">
+                    <div class="row">
+                        <div class="col">
+                            <h3><i class="fas fa-solid fa-laptop"></i> Baja Equipos</h3>
+                        </div>
+                        <div class="col">
+                        </div>
+                        <div class="col">
+                            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="liveToastContainer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   
+                <br />
+
+                <br />
+
+
+       
+
+            <div class="container">
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Tabla Equipo Baja
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple" class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="display: none;">Id</th>
+                                        <th>Responsiva</th>
+                                        <th>Usuario</th>
+                                        <th>Nombre Equipo</th>
+                                        <th>Visualizar</th>
+                                    
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th style="display: none;">Id</th>
+                                        <th>Responsiva</th>
+                                        <th>Usuario</th>
+                                        <th>Nombre Equipo</th>
+                                        <th>Visualizar</th>
+                                   
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td style="display: none;">@item.Id_Equipo</td>
+                                            <td>@item.Responsiva C</td>
+                                            <td>@item.Empleado</td>
+                                            <td>@item.Nombre</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info" data-mdb-ripple-init data-bs-toggle="modal" data-bs-target="#exampleModalV" data-id="@item.Id_Equipo"><i class="fa-solid fa-eye"></i></button>
+                                            </td>
+                                       
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*MODAL DE VIZUALIZACION*@
+
+            <div class="modal fade" id="exampleModalV" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#8C8C8C">
+                            <h5 class="modal-title" id="exampleModalLabel">Visualizar Equipo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="IdEquipoV"> <!-- Campo oculto para guardar el ID del equipo -->
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="Nombre">Empleado:</label>
+                                    <input type="text" class="form-control" id="EmpleadoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ServiceTag">Responsiva:</label>
+                                    <input type="text" class="form-control" id="ResponsivaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Modelo">Nombre Equipo:</label>
+                                    <input type="text" class="form-control" id="NombreV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+
+                                <div class="col">
+                                    <label for="ServiceTag">Service Tag:</label>
+                                    <input type="text" class="form-control" id="ServiceTagV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Modelo">Modelo:</label>
+                                    <input type="text" class="form-control" id="ModeloV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="TipoEquipo">Tipo de Equipo:</label>
+                                    <input type="text" class="form-control" id="TipoEquipoV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+
+                                <div class="col">
+                                    <label for="Dominio">Dominio:</label>
+                                    <input type="text" class="form-control" id="DominioV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Estado">Estado:</label>
+                                    <input type="text" class="form-control" id="EstadoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Resguardo">Resguardo:</label>
+                                    <input type="text" class="form-control" id="ResguardoV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Activo Fijo:</label>
+                                    <input type="text" class="form-control" id="ActivoFijoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Inicio de Garantía:</label>
+                                    <input type="date" class="form-control" id="InicioGarantiaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Fin de Garantía:</label>
+                                    <input type="date" class="form-control" id="FinGarantiaV" disabled>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Adquisión:</label>
+                                    <input type="text" class="form-control" id="AdquisionV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Fecha Adquisión:</label>
+                                    <input type="date" class="form-control" id="FechaAdquisionV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Marca:</label>
+                                    <input type="text" class="form-control" id="MarcaV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Sistema Operativo:</label>
+                                    <input type="text" class="form-control" id="SistemaOperativoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Procesador:</label>
+                                    <input type="text" class="form-control" id="ProcesadorV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Office Version:</label>
+                                    <input type="text" class="form-control" id="OfficeVersionV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Licencia:</label>
+                                    <input type="text" class="form-control" id="LicenciaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Disco:</label>
+                                    <input type="text" class="form-control" id="DiscoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Memoria RAM:</label>
+                                    <input type="text" class="form-control" id="MemoriaRAMV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Cargador:</label>
+                                    <input type="text" class="form-control" id="CargadorV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Numero Pantalla:</label>
+                                    <input type="text" class="form-control" id="NoPantallaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Modelo Pantalla:</label>
+                                    <input type="text" class="form-control" id="ModeloPantallaV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Numero Teclado:</label>
+                                    <input type="text" class="form-control" id="NoTecladoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Modelo Teclado:</label>
+                                    <input type="text" class="form-control" id="ModeloTecladoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Numero Mouse:</label>
+                                    <input type="text" class="form-control" id="NoMouseV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Modelo Mouse:</label>
+                                    <input type="text" class="form-control" id="ModeloMouseV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Antena:</label>
+                                    <input type="text" class="form-control" id="AntenaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Disco Externo:</label>
+                                    <input type="text" class="form-control" id="DiscoExternoV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Maletin:</label>
+                                    <input type="text" class="form-control" id="MaletinV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Otros:</label>
+                                    <input type="text" class="form-control" id="OtrosV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">LAN:</label>
+                                    <input type="text" class="form-control" id="LANV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">WLAN:</label>
+                                    <input type="text" class="form-control" id="WLANV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">IP:</label>
+                                    <input type="text" class="form-control" id="IPV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Team Viewer:</label>
+                                    <input type="text" class="form-control" id="TeamViewerV" disabled>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">AnyDesk:</label>
+                                    <input type="text" class="form-control" id="AnyDeskV" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+ 
+
+    </div>
+    <script src="~/js/BajaEquipo.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/datatables-simple-demo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

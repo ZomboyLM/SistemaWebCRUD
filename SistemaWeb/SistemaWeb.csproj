@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\Imagenes\Logo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\styles.css" />
+    <None Include="wwwroot\Imagenes\Fondo.png" />
+    <None Include="wwwroot\Imagenes\Papel.jpg" />
+    <None Include="wwwroot\js\datatables-simple-demo.js" />
+    <None Include="wwwroot\js\scripts.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\Imagenes\Logo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.18" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="js\" />
+  </ItemGroup>
+
+</Project>

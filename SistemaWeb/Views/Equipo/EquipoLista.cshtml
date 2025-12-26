@@ -1,0 +1,911 @@
+﻿@model List<EquipoModel>
+@{
+    ViewData["Title"] = "Equipos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="~/css/carga.css" rel="stylesheet" />
+    <style>
+        /* Oculta la primera columna en la tabla */
+        #datatablesSimple th:first-child,
+        #datatablesSimple td:first-child {
+            display: none;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav">
+       
+
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu" style="background-color: #737373;">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading" style="color:white; background-color: #343a40  ">Secciones</div>
+                            <a asp-controller="Home" asp-action="Index" class="nav-link" style="color:white">
+                                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-house" style="color:white"></i></div>
+                                Index
+                            </a>
+                            <a asp-controller="Equipo" asp-action="EquipoLista" class="nav-link" style="color:white">
+                                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-laptop" style="color:white"></i></div>
+                                Equipos
+                            </a>
+                            <a asp-controller="EquipoBaja" asp-action="EquipoBaja" class="nav-link" style="color:white">
+                                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-circle-xmark" style="color:white"></i></div>
+                                Baja Equipos
+                            </a>
+                            <a asp-controller="Usuarios" asp-action="Listar" class="nav-link" style="color:white">
+                                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-circle-user" style="color:white"></i></div>
+                                Usuarios
+                            </a>
+                            <a asp-controller="Empleado" asp-action="EmpleadoLista" class="nav-link" style="color:white">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users fa-fw" style="color:white"></i></div>
+                                Empleados
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="sb-sidenav-footer">
+                    </div>
+                </nav>
+            </div>
+
+        <div id="layoutSidenav_content" style="justify-content: flex-start;">
+            <div class="preloader">
+                <div class="text-container">
+                    <div class="letter" style="color: #7FA644;">G</div>
+                    <div class="letter" style="color: #737373;">R</div>
+                    <div class="letter" style="color: #A6BF6F;">U</div>
+                    <div class="letter" style="color: #8C8C8C;">P</div>
+                    <div class="letter" style="color: #7FA644;">A</div>
+                    <div class="letter" style="color: #737373;">K</div>
+                </div>
+                <div class="circle-container">
+                    <div class="circle" style="background-color: #7FA644;"></div>
+                    <div class="circle" style="background-color: #737373;"></div>
+                    <div class="circle" style="background-color: #A6BF6F;"></div>
+                    <div class="circle" style="background-color: #8C8C8C;"></div>
+                </div>
+            </div>
+
+            <div class="container" style="margin-top:30px;">
+                <div class="row">
+                    <div class="col">
+                        <h3><i class="fas fa-solid fa-laptop"></i> Equipos</h3>
+                    </div>
+                    <div class="col">
+                    </div>
+                    <div class="col">
+                        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="liveToastContainer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px; margin-top:30px;"><button type="button" class="btn" style="background-color:#A6BF6F; color:#FFFFFF;" data-mdb-ripple-init data-bs-toggle="modal" data-bs-target="#NuevoModal">Nuevo Equipo</button></div>
+
+    
+
+            <div class="container">
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Tabla Equipos
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple" class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="display: none;">Id</th>
+                                        <th>Responsiva</th>
+                                        <th>Usuario</th>
+                                        <th>Nombre Equipo</th>
+                                        <th>Visualizar</th>
+                                        <th>Editar</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th style="display: none;">Id</th>
+                                        <th>Responsiva</th>
+                                        <th>Usuario</th>
+                                        <th>Nombre Equipo</th>
+                                        <th>Visualizar</th>
+                                        <th>Editar</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td style="display: none;">@item.Id_Equipo</td>
+                                            <td>@item.Responsiva C</td>
+                                            <td>@item.Empleado</td>
+                                            <td>@item.Nombre</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info" data-mdb-ripple-init data-bs-toggle="modal" data-bs-target="#exampleModalV" data-id="@item.Id_Equipo"><i class="fa-solid fa-eye"></i></button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" data-mdb-ripple-init data-bs-toggle="modal" data-bs-target="#EditarModal" data-id="@item.Id_Equipo"><i class="fas fa-solid fa-pen-to-square"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*MODAL DE VIZUALIZACION*@
+
+            <div class="modal fade" id="exampleModalV" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#8C8C8C">
+                            <h5 class="modal-title" id="exampleModalLabel">Visualizar Equipo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="IdEquipoV"> <!-- Campo oculto para guardar el ID del equipo -->
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="Nombre">Empleado:</label>
+                                    <input type="text" class="form-control" id="EmpleadoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ServiceTag">Responsiva:</label>
+                                    <input type="text" class="form-control" id="ResponsivaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Modelo">Nombre Equipo:</label>
+                                    <input type="text" class="form-control" id="NombreV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                           
+                                <div class="col">
+                                    <label for="ServiceTag">Service Tag:</label>
+                                    <input type="text" class="form-control" id="ServiceTagV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Modelo">Modelo:</label>
+                                    <input type="text" class="form-control" id="ModeloV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="TipoEquipo">Tipo de Equipo:</label>
+                                    <input type="text" class="form-control" id="TipoEquipoV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                            
+                                <div class="col">
+                                    <label for="Dominio">Dominio:</label>
+                                    <input type="text" class="form-control" id="DominioV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Estado">Estado:</label>
+                                    <input type="text" class="form-control" id="EstadoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="Resguardo">Resguardo:</label>
+                                    <input type="text" class="form-control" id="ResguardoV" disabled>
+                                </div>
+                            
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="ActivoFijo">Activo Fijo:</label>
+                                    <input type="text" class="form-control" id="ActivoFijoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="InicioGarantia">Inicio de Garantía:</label>
+                                    <input type="date" class="form-control" id="InicioGarantiaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Fin de Garantía:</label>
+                                    <input type="date" class="form-control" id="FinGarantiaV" disabled>
+                                </div>
+  
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="InicioGarantia">Fecha Adquisión:</label>
+                                    <input type="date" class="form-control" id="FechaAdquisionV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Marca:</label>
+                                    <input type="text" class="form-control" id="MarcaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">Sistema Operativo:</label>
+                                    <input type="text" class="form-control" id="SistemaOperativoV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                
+                                <div class="col">
+                                    <label for="InicioGarantia">Procesador:</label>
+                                    <input type="text" class="form-control" id="ProcesadorV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Office Version:</label>
+                                    <input type="text" class="form-control" id="OfficeVersionV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">Licencia:</label>
+                                    <input type="text" class="form-control" id="LicenciaV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                
+                                <div class="col">
+                                    <label for="InicioGarantia">Disco:</label>
+                                    <input type="text" class="form-control" id="DiscoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Memoria RAM:</label>
+                                    <input type="text" class="form-control" id="MemoriaRAMV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">Cargador:</label>
+                                    <input type="text" class="form-control" id="CargadorV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                
+                                <div class="col">
+                                    <label for="InicioGarantia">Numero Pantalla:</label>
+                                    <input type="text" class="form-control" id="NoPantallaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Modelo Pantalla:</label>
+                                    <input type="text" class="form-control" id="ModeloPantallaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">Numero Teclado:</label>
+                                    <input type="text" class="form-control" id="NoTecladoV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                
+                                <div class="col">
+                                    <label for="InicioGarantia">Modelo Teclado:</label>
+                                    <input type="text" class="form-control" id="ModeloTecladoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Numero Mouse:</label>
+                                    <input type="text" class="form-control" id="NoMouseV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">Modelo Mouse:</label>
+                                    <input type="text" class="form-control" id="ModeloMouseV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                               
+                                <div class="col">
+                                    <label for="InicioGarantia">Antena:</label>
+                                    <input type="text" class="form-control" id="AntenaV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Disco Externo:</label>
+                                    <input type="text" class="form-control" id="DiscoExternoV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">Maletin:</label>
+                                    <input type="text" class="form-control" id="MaletinV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                
+                                <div class="col">
+                                    <label for="InicioGarantia">Otros:</label>
+                                    <input type="text" class="form-control" id="OtrosV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">LAN:</label>
+                                    <input type="text" class="form-control" id="LANV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">WLAN:</label>
+                                    <input type="text" class="form-control" id="WLANV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                
+                                <div class="col">
+                                    <label for="InicioGarantia">IP:</label>
+                                    <input type="text" class="form-control" id="IPV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="FinGarantia">Team Viewer:</label>
+                                    <input type="text" class="form-control" id="TeamViewerV" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="ActivoFijo">AnyDesk:</label>
+                                    <input type="text" class="form-control" id="AnyDeskV" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+          @*  MODAL DE INSERCION *@
+
+            <div class="modal fade" id="NuevoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #8C8C8C; color: white;">
+                            <h5 class="modal-title" id="exampleModalLabel">Nuevo Equipo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="NombreN" autocomplete="off">
+                                        <label for="floatingInput">Nombre Computadora</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="Service_tagN" autocomplete="off">
+                                        <label for="floatingInput">Service Tag</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="ModeloN" autocomplete="off">
+                                        <label for="floatingInput">Modelo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="TipoequipoN" autocomplete="off">
+                                        <label for="floatingInput">Tipo Equipo</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DominioN" autocomplete="off">
+                                        <label for="floatingInput">Dominio</label>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="EstatusN" class="form-select">
+                                            <option selected disabled>Estatus</option>
+                                            @foreach (var estatus in ViewBag.Estatus)
+                                            {
+                                                <option value="@estatus.IdEstatus">@estatus.Estatus</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <select id="ResguardoN" class="form-select" disabled>
+                                            <option selected disabled>Tipo Resguardo</option>
+                                            @foreach (var resguardo in ViewBag.Resguardo)
+                                            {
+                                                <option value="@resguardo.IdResguardo">@resguardo.Resguardo</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="ActivoFijoN" autocomplete="off">
+                                        <label for="floatingInput">Activo Fijo</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="date" class="form-control" id="IniGarantiaN" autocomplete="off">
+                                        <label for="floatingInput">Inicio Garantia</label>
+                                    </div>
+                       
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    <div class="col form-floating mb-4">
+                                        <input type="date" class="form-control" id="FinGarantiaN" autocomplete="off">
+                                        <label for="floatingInput">Fin Garantia</label>
+                                    </div>
+                                    <div class="col form-floating mb-4">
+                                        <input type="date" class="form-control" id="FechaAdquisionN" autocomplete="off">
+                                        <label for="floatingInput">Fecha Adquision</label>
+                                    </div>
+                                    <div class="col form-floating mb-4">
+                                        <input type="text" class="form-control" id="MarcaN" autocomplete="off">
+                                        <label for="floatingInput">Marca</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="SistemaOperativoN" autocomplete="off">
+                                        <label for="floatingInput">Sistema Operativo</label>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="ProcesadorN" class="form-select">
+                                            <option selected disabled>Procesador</option>
+                                            @foreach (var procesador in ViewBag.Procesador)
+                                            {
+                                                <option value="@procesador.Procesador">@procesador.Procesador</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="OfficeVersionN" class="form-select">
+                                            <option selected disabled>Office Version</option>
+                                            @foreach (var office in ViewBag.Office)
+                                            {
+                                                <option value="@office.Office">@office.Office</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="LicenciaN" autocomplete="off">
+                                        <label for="floatingInput">Licencia</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DiscoN" autocomplete="off">
+                                        <label for="floatingInput">Disco</label>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="MemoriaRAMN" class="form-select">
+                                            <option selected disabled>Memoria RAM</option>
+                                            @foreach (var ram in ViewBag.Ram)
+                                            {
+                                                <option value="@ram.Ram">@ram.Ram</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="CableCargadorN" autocomplete="off">
+                                        <label for="floatingInput">Cable Cargador</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="NoPantallaN" autocomplete="off">
+                                        <label for="floatingInput">No Pantalla</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="ModeloPantallaN" autocomplete="off">
+                                        <label for="floatingInput">Modelo Pantalla</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="NoTecladoN" autocomplete="off">
+                                        <label for="floatingInput">No Teclado</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="ModeloTecladoN" autocomplete="off">
+                                        <label for="floatingInput">Modelo Teclado</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="NoMouseN" autocomplete="off">
+                                        <label for="floatingInput">No Mouse</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="ModeloMouseN" autocomplete="off">
+                                        <label for="floatingInput">Modelo Mouse</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="AntenaN" autocomplete="off">
+                                        <label for="floatingInput">Antena</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DiscoExternoN" autocomplete="off">
+                                        <label for="floatingInput">Disco Externo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="MaletinN" autocomplete="off">
+                                        <label for="floatingInput">Maletin</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="OtrosN" autocomplete="off">
+                                        <label for="floatingInput">Otros</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="MacLANN" autocomplete="off">
+                                        <label for="floatingInput">Mac LAN</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="MacWLANN" autocomplete="off">
+                                        <label for="floatingInput">Mac WLAN</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DireccionIPN" autocomplete="off">
+                                        <label for="floatingInput">Dirección IP</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="AnyDeskN" autocomplete="off">
+                                        <label for="floatingInput">AnyDesk</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="TeamViewerN" autocomplete="off">
+                                        <label for="floatingInput">TeamViewer</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="liveToastContainer2">
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn" style="background-color:#A6BF6F" id="btnGuardarCambiosN">Guardar cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            @*MODAL EDITAR EQUIPO*@
+
+            <div class="modal fade" id="EditarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #8C8C8C; color: white;">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Equipo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    <div class="col mb-4">
+                                        <select id="EmpleadoE" class="form-select">
+                                            <option selected disabled>Empleado</option>
+                                            @foreach (var empleado in ViewBag.Empleado)
+                                            {
+                                                <option value="@empleado.IdEmpleado">@empleado.Empleado</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="ResponsivaE" disabled>
+                                        <label for="floatingInput">Responsiva</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="NombreE" autocomplete="off">
+                                        <label for="floatingInput">Nombre Computadora</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="Service_tagE" autocomplete="off">
+                                        <label for="floatingInput">Service Tag</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="ModeloE" autocomplete="off">
+                                        <label for="floatingInput">Modelo</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="TipoequipoE" autocomplete="off">
+                                        <label for="floatingInput">Tipo Equipo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DominioE" autocomplete="off">
+                                        <label for="floatingInput">Dominio</label>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="EstadoE" class="form-select">
+                                            <option selected disabled>Estatus</option>
+                                            @foreach (var estatus in ViewBag.Estatus)
+                                            {
+                                                <option value="@estatus.IdEstatus">@estatus.Estatus</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="ResguardoE" class="form-select" disabled>
+                                            <option selected disabled>Tipo Resguardo</option>
+                                            @foreach (var resguardo in ViewBag.Resguardo)
+                                            {
+                                                <option value="@resguardo.IdResguardo">@resguardo.Resguardo</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="ActivoFijoE" autocomplete="off">
+                                        <label for="floatingInput">Activo Fijo</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="date" class="form-control" id="IniGarantiaE" autocomplete="off">
+                                        <label for="floatingInput">Inicio Garantia</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="date" class="form-control" id="FinGarantiaE" autocomplete="off">
+                                        <label for="floatingInput">Fin Garantia</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                    <div class="col form-floating mb-8">
+                                        <input type="date" class="form-control" id="FechaAdquisionE" autocomplete="off">
+                                        <label for="floatingInput">Fecha Adquision</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="MarcaE" autocomplete="off">
+                                        <label for="floatingInput">Marca</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="SistemaOperativoE" autocomplete="off">
+                                        <label for="floatingInput">Sistema Operativo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                   
+                                    <div class="col col-md-4">
+                                        <select id="ProcesadorE" class="form-select">
+                                            <option selected disabled>Procesador</option>
+                                            @foreach (var procesador in ViewBag.Procesador)
+                                            {
+                                                <option value="@procesador.Procesador">@procesador.Procesador</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="OfficeVersionE" class="form-select">
+                                            <option selected disabled>Office Version</option>
+                                            @foreach (var office in ViewBag.Office)
+                                            {
+                                                <option value="@office.Office">@office.Office</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="LicenciaE" autocomplete="off">
+                                        <label for="floatingInput">Licencia</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                    
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DiscoE" autocomplete="off">
+                                        <label for="floatingInput">Disco</label>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <select id="MemoriaRAME" class="form-select">
+                                            <option selected disabled>Memoria RAM</option>
+                                            @foreach (var ram in ViewBag.Ram)
+                                            {
+                                                <option value="@ram.Ram">@ram.Ram</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="CableCargadorE" autocomplete="off">
+                                        <label for="floatingInput">Cable Cargador</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                   
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="NoPantallaE" autocomplete="off">
+                                        <label for="floatingInput">No Pantalla</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="ModeloPantallaE" autocomplete="off">
+                                        <label for="floatingInput">Modelo Pantalla</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="NoTecladoE" autocomplete="off">
+                                        <label for="floatingInput">No Teclado</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                               
+                                    
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="ModeloTecladoE" autocomplete="off">
+                                        <label for="floatingInput">Modelo Teclado</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="NoMouseE" autocomplete="off">
+                                        <label for="floatingInput">No Mouse</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="ModeloMouseE" autocomplete="off">
+                                        <label for="floatingInput">Modelo Mouse</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                    
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="AntenaE" autocomplete="off">
+                                        <label for="floatingInput">Antena</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DiscoExternoE" autocomplete="off">
+                                        <label for="floatingInput">Disco Externo</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="MaletinE" autocomplete="off">
+                                        <label for="floatingInput">Maletin</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                               
+                                    
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="OtrosE" autocomplete="off">
+                                        <label for="floatingInput">Otros</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="MacLANE" autocomplete="off">
+                                        <label for="floatingInput">Mac LAN</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="MacWLANE" autocomplete="off">
+                                        <label for="floatingInput">Mac WLAN</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                   
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="DireccionIPE" autocomplete="off">
+                                        <label for="floatingInput">Dirección IP</label>
+                                    </div>
+                                    <div class="col form-floating mb-8">
+                                        <input type="text" class="form-control" id="AnyDeskE" autocomplete="off">
+                                        <label for="floatingInput">AnyDesk</label>
+                                    </div>
+                                    <div class=" col form-floating mb-4">
+                                        <input type="text" class="form-control" id="TeamViewerE" autocomplete="off">
+                                        <label for="floatingInput">TeamViewer</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <div class="row">
+                                
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="liveToastContainer3">
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn" style="background-color:#A6BF6F" id="btnGuardarCambiosE">Guardar cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*FIN EDITAR*@
+
+    </div>
+        <script src="~/js/equipo.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/datatables-simple-demo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SistemaWeb
+build_property.RootNamespace = SistemaWeb
+build_property.ProjectDir = C:\Users\bry21\OneDrive\Desktop\SistemaWeb\SistemaWeb\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\bry21\OneDrive\Desktop\SistemaWeb\SistemaWeb
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 6.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Empleado/EmpleadoLista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cRW1wbGVhZG9MaXN0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/EquipoBaja/EquipoBaja.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBvQmFqYVxFcXVpcG9CYWphLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Equipo/EquipoLista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBvXEVxdWlwb0xpc3RhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Usuarios/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTGlzdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bry21/OneDrive/Desktop/SistemaWeb/SistemaWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-qjc0un72h1

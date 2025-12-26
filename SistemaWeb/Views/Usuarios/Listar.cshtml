@@ -1,0 +1,216 @@
+﻿@model List<UsuarioModel>
+@{
+    ViewData["Title"] = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html >
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="~/css/carga.css" rel="stylesheet" />
+    <style>
+        /* Oculta la primera columna en la tabla */
+        #datatablesSimple th:first-child,
+        #datatablesSimple td:first-child {
+            display: none;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav">
+
+
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu" style="background-color: #737373;">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading" style="color:white; background-color: #343a40  ">Secciones</div>
+                        <a asp-controller="Home" asp-action="Index" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-house" style="color:white"></i></div>
+                            Index
+                        </a>
+                        <a asp-controller="Equipo" asp-action="EquipoLista" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-laptop" style="color:white"></i></div>
+                            Equipos
+                        </a>
+                        <a asp-controller="EquipoBaja" asp-action="EquipoBaja" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-circle-xmark" style="color:white"></i></div>
+                            Baja Equipos
+                        </a>
+                        <a asp-controller="Usuarios" asp-action="Listar" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-solid fa-circle-user" style="color:white"></i></div>
+                            Usuarios
+                        </a>
+                        <a asp-controller="Empleado" asp-action="EmpleadoLista" class="nav-link" style="color:white">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users fa-fw" style="color:white"></i></div>
+                            Empleados
+                        </a>
+                    </div>
+
+                </div>
+                <div class="sb-sidenav-footer">
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content" style="justify-content: flex-start;">
+            <div class="preloader">
+                <div class="text-container">
+                    <div class="letter" style="color: #7FA644;">G</div>
+                    <div class="letter" style="color: #737373;">R</div>
+                    <div class="letter" style="color: #A6BF6F;">U</div>
+                    <div class="letter" style="color: #8C8C8C;">P</div>
+                    <div class="letter" style="color: #7FA644;">A</div>
+                    <div class="letter" style="color: #737373;">K</div>
+                </div>
+                <div class="circle-container">
+                    <div class="circle" style="background-color: #7FA644;"></div>
+                    <div class="circle" style="background-color: #737373;"></div>
+                    <div class="circle" style="background-color: #A6BF6F;"></div>
+                    <div class="circle" style="background-color: #8C8C8C;"></div>
+                </div>
+            </div>
+   
+
+            <div class="container" style="margin-top:30px;">
+                <div class="row">
+                    <div class="col">
+                        <h3><i class="fas fa-users fa-fw"></i> Usuarios</h3>
+                    </div>
+                    <div class="col">
+                    </div>
+                    <div class="col">
+                        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="liveToastContainer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px; margin-top:30px;">@* Botones *@</div>
+
+    
+        
+            <div class="container">
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Tabla Usuarios
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple" class="table">
+                                <thead>
+                                    <tr>
+                                        <th >Id</th>
+                                        <th>Correo</th>
+                                    
+                                        <th>Estatus</th>
+                                        <th>Fecha Alta</th>
+                                        <th>Usuario Alta</th>
+                                        <th>Fecha Modificación </th>
+                                        <th>Usuario Modificacion</th>
+                                        <th>Fecha Baja</th>
+                                        <th>Usuario Baja</th>
+                                        <th>Editar</th>
+                                    
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Correo</th>
+                                    
+                                        <th>Estatus</th>
+                                        <th>Fecha Alta</th>
+                                        <th>Usuario Alta</th>
+                                        <th>Fecha Modificación </th>
+                                        <th>Usuario Modificacion</th>
+                                        <th>Fecha Baja</th>
+                                        <th>Usuario Baja</th>
+                                        <th>Editar</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td >@item.Id_Usuario</td>
+                                            <td>@item.Correo</td>
+                                            <td>
+                                                @if (item.Estatus == 1)
+                                                {
+                                                    <span style="background-color: #097117; color:white; border-radius:10px; padding: 1px 10px;">Activo</span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="background-color:#CE0808; color:white; border-radius:10px; padding: 1px 10px;">Inactivo</span>
+                                                }
+                                            </td>
+                                            <td>@item.Fecha_Creacion</td>
+                                            <td>@item.UsuarioAlta</td>
+                                            <td>@item.Fecha_Modifica</td>
+                                            <td>@item.Usuario_Modifica</td>
+                                            <td>@item.Fecha_Baja</td>
+                                            <td>@item.Usuario_Baja</td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" data-mdb-ripple-init data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="@item.Id_Usuario"><i class="fas fa-solid fa-pen-to-square"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color:#8C8C8C">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Contenido Modal -->
+                                    <div id="alertita" style="margin-left: 0px;">
+                                        @*div alerta*@
+                                    </div>
+                                    <input type="hidden" id="IdUsuario"> <!-- Campo oculto para guardar el ID del usuario -->
+                                    <div class="form-floating mb-3">
+                                     <input type="text" class="form-control" id="Correo" autocomplete="off">
+                                        <label for="floatingInput">Correo</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                     <input type="password" class="form-control" id="Contrasena" autocomplete="off">
+                                        <label for="floatingInput">Contraseña</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">Estatus</label>
+                                    </div>
+
+                                    <!-- Fin contenido Modal -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn" style="background-color:#A6BF6F" id="btnGuardarCambios">Guardar cambios</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </div>
+                <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="~/js/usuario.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+                <script src="~/js/datatables-simple-demo.js"></script>
+                <script src="https://code.jquery.com/jquery-3.7.1.js"
+                        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

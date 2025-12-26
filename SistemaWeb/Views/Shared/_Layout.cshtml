@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SistemaWeb</title>
+@*     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SistemaWeb.styles.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    @* <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> *@
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body style="background-color:#F1F1F1;">
+    <header>
+@*         <nav class="navbar navbar-light" style="background-color: #C2C0C0; margin-top: -10px">
+            <div class="container-fluid mt-0" style="background-color: #7FA644; height:25px">
+                <div class="d-flex justify-content-end">
+                    <a href="user-update.html">
+                        <i class="fas fa-user-cog"></i>
+                    </a>
+                    <a href="@Url.Action("CerrarSesion","Login")" class="btn-exit-system" style="margin-left: auto;">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <a href="#">
+                    <img src="https://ellibrogordo.com.mx/wp-content/uploads/2023/05/GPK-LOGO-VERDE-2022.png" alt="Logo" width="200" height="80">
+                </a>
+            </div>
+        </nav> *@
+        <nav class="sb-topnav navbar navbar-expand" style="background-color: #A6BF6F" >
+            <!-- Navbar Brand-->
+            <a asp-controller="Home" asp-action="Index">
+            <img src="https://ellibrogordo.com.mx/wp-content/uploads/2023/05/GPK-LOGO-VERDE-2022.png" alt="Logo" width="130" height="50">
+           </a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars" style=" color: black;"></i></button>
+            <!-- Navbar Search-->
+            
+                <div class="input-group">
+                   
+                </div>
+         
+            <br />
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item">@ViewBag.Usuario</a></li>
+                        
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="@Url.Action("CerrarSesion","Login")">Salir</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container" style="margin-bottom:60px">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+           
+        </main>
+        
+    </div>
+    <footer class="border-top footer text-muted" style="background-color: #7FA644;">
+        <p style="color:#FFFFFF; text-align:center;">© . OPERACIONES S.A. de C.V. 2024 </p>
+    </footer>
+ 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/scripts.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
